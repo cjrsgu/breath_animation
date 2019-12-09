@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Animated } from 'react-native';
+import { View, Image, Animated } from 'react-native';
 
 import styles from './styles';
 import AnimatedBall from './AnimatedBall';
@@ -19,7 +19,19 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-
+      <Image
+        source={{
+          uri: 'asset:/images/cloud.jpg',
+        }}
+        style={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          flex: 1,
+          height: 500,
+          width: 500,
+        }}
+      />
       <AnimatedBall
         style={{
           position: 'absolute',
@@ -121,18 +133,29 @@ const App = () => {
       </AnimatedBall>
       <AnimatedBall
         style={{
+          overflow: 'hidden',
           position: 'absolute',
           opacity: 1,
           backgroundColor: 'green',
-          rotation: rotation.interpolate({
-            inputRange: [0, 0.7, 1],
-            outputRange: [0, 45, 0],
-          }),
         }}
         duration={10000}
         inputRange={[0, 0.7, 1]}
         outputRange={[50, 80, 100]}
-      />
+      >
+        <Image
+          source={{
+            uri: 'asset:/images/cloud.jpg',
+          }}
+          style={{
+            position: 'absolute',
+            left: -149,
+            top: -310,
+            flex: 1,
+            height: 500,
+            width: 500,
+          }}
+        />
+      </AnimatedBall>
     </View>
   );
 };
